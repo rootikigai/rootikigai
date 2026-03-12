@@ -724,3 +724,7 @@ window.addEventListener('resize', runFitDebounced);
 window.matchMedia('(max-width: 900px) and (orientation: portrait)').addEventListener('change', runFitDebounced);
 
 
+<!-- Back chevron only — no forward chevron on last page -->
+                    <span class="nextprev-btn back" data-page="turn-3">
+                        <img src="assets/chevrons-left.png" alt="">
+                    </span>

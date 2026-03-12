@@ -15,9 +15,9 @@
 
 <body>
     <div class="wrapper">
-        <div class="cover cover-left"></div>
-        <div class="cover cover-right"></div>
         <div class="book">
+            <div class="cover cover-left"></div>
+            <div class="cover cover-right"></div>
             <!-- Spread 1 -->
             <!-- Flipping element: Front = Profile, Back = Work Experience -->
             <div class="book-page" id="turn-1">
@@ -104,6 +104,11 @@
                     </div>
 
                     <span class="number-page">2</span>
+
+                    <!-- Back chevron -->
+                    <span class="nextprev-btn back" data-page="turn-1">
+                        <img src="assets/chevrons-left.png" alt="">
+                    </span>
                 </div>
             </div>
 
@@ -140,11 +145,6 @@
                     </div>
 
                     <span class="number-page">3</span>
-
-                    <!-- Back chevron -->
-                    <span class="nextprev-btn back" data-page="turn-1">
-                        <img src="assets/chevrons-left.png" alt="">
-                    </span>
 
                     <!-- Forward chevron -->
                     <span class="nextprev-btn next" data-page="turn-2">
@@ -189,6 +189,11 @@
                     </div>
 
                     <span class="number-page">4</span>
+
+                    <!-- Back chevron -->
+                    <span class="nextprev-btn back" data-page="turn-2">
+                        <img src="assets/chevrons-left.png" alt="">
+                    </span>
                 </div>
             </div>
 
@@ -261,11 +266,6 @@
 
                     <span class="number-page">5</span>
 
-                    <!-- Back chevron -->
-                    <span class="nextprev-btn back" data-page="turn-2">
-                        <img src="assets/chevrons-left.png" alt="">
-                    </span>
-
                     <!-- Forward chevron -->
                     <span class="nextprev-btn next" data-page="turn-3">
                         <img src="assets/chevrons-right.png" alt="">
@@ -315,6 +315,11 @@
                     </div>
 
                     <span class="number-page">6</span>
+
+                    <!-- Back chevron only — no forward chevron on last page -->
+                    <span class="nextprev-btn back" data-page="turn-3">
+                        <img src="assets/chevrons-left.png" alt="">
+                    </span>
                 </div>
             </div>
 
@@ -335,11 +340,6 @@
                     </div>
 
                     <span class="number-page">7</span>
-
-                    <!-- Back chevron only — no forward chevron on last page -->
-                    <span class="nextprev-btn back" data-page="turn-3">
-                        <img src="assets/chevrons-left.png" alt="">
-                    </span>
 
                     <a href="" class="back-profile">
                         <img src="assets/user.png" alt="">

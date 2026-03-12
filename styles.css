@@ -11,7 +11,7 @@
 }
 
 :root {
-    --bg-color: #081b29;
+    --bg-color: #020c13;
     --text-color: #333;
     --main-color: #080707;
     --white-color: #fff;
@@ -33,7 +33,10 @@ body {
 
 /* ── Wrapper ── */
 .wrapper {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 66rem;
     height: 45rem;
     padding: 2rem;
@@ -51,6 +54,7 @@ body {
     box-shadow: var(--box-shadow);
     border-top-left-radius: .6rem;
     border-bottom-left-radius: .6rem;
+    transform-style: preserve-3d;
     z-index: 0;
 }
 
@@ -60,6 +64,7 @@ body {
     border-bottom-left-radius: 0;
     border-top-right-radius: .6rem;
     border-bottom-right-radius: .6rem;
+    z-index: 5;
 }
 
 /* ── Book ── */
