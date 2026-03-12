@@ -17,343 +17,339 @@
     <div class="wrapper">
         <div class="cover cover-left"></div>
         <div class="cover cover-right"></div>
-
         <div class="book">
             <!-- Spread 1 -->
-            <!-- Page 1: Profile -->
-            <div class="book-page page-left" id="page-1">
-                <div class="profile-page">
-                    <img src="assets/Ikigai_Main_Pic_2.png" alt="Kelvin Ifeanyi - Software Engineer">
-                    <h1>Kelvin Ifeanyi</h1>
-                    <h3>Software Engineer</h3>
+            <!-- Flipping element: Front = Profile, Back = Work Experience -->
+            <div class="book-page" id="turn-1">
+                <!-- Front: Profile (Page 1) -->
+                <div class="page-front">
+                    <div class="profile-page">
+                        <img src="assets/Ikigai_Main_Pic_2.png" alt="Kelvin Ifeanyi - Software Engineer">
+                        <h1>Kelvin Ifeanyi</h1>
+                        <h3>Software Engineer</h3>
 
-                    <div class="social-media">
-                        <a href="#">
-                            <i class='bx  bxl-github'></i>
-                        </a>
-                        <a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                            </svg>
-                        </a>
-                        <a href="#">
-                            <i class='bx  bxl-linkedin'></i>
-                        </a>
+                        <div class="social-media">
+                            <a href="#">
+                                <i class='bx bxl-github'></i>
+                            </a>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                </svg>
+                            </a>
+                            <a href="#">
+                                <i class='bx bxl-linkedin'></i>
+                            </a>
+                        </div>
+
+                        <p>Software Engineer with 4+ years of experience, building scalable web apps and microservices
+                            using
+                            Spring Boot, Python, React, Node.js, Docker, and CI/CD. I deliver high-performance, reliable
+                            software that drives business impact and enhances user experience.</p>
+
+                        <div class="btn-box">
+                            <a href="https://drive.google.com/file/d/1OPITQGPCHCfzbcSZ6NB7tFszmpHDE24W/view?usp=drive_link"
+                                class="btn">Download CV</a>
+                            <a href="#" class="btn contact-me">Contact Me</a>
+                        </div>
+                        <span class="number-page">1</span>
                     </div>
 
-                    <p>
-                        Software Engineer with 4+ years of experience, building scalable web apps and
-                        microservices
-                        using Spring Boot, Python, React, Node.js, Docker, and CI/CD. I deliver high-performance,
-                        reliable
-                        software that drives business impact and enhances user experience.
-                    </p>
-
-                    <div class="btn-box">
-                        <a href="https://drive.google.com/file/d/1OPITQGPCHCfzbcSZ6NB7tFszmpHDE24W/view?usp=drive_link"
-                            class="btn">Download CV</a>
-                        <a href="#" class="btn contact-me">Contact Me</a>
-                    </div>
-                    <span class="number-page">1</span>
-                </div>
-            </div>
-
-            <!-- page 2: Work Experience -->
-            <div class="book-page page-right  " id="turn-1">
-                <!-- page 2 (Work Experience) -->
-                <h1 class="title">Work Experience</h1>
-
-                <div class="workeduc-box">
-                    <div class="workeduc-content">
-                        <h4 class="year">
-                            <img src="assets/calendar-alt.png" alt="">
-                            Feb 2025 - Present
-                        </h4>
-                        <h3>Full Stack Engineer & Team Lead (Software Techpreneurship) - Semicolon Africa</h3>
-                        <p>
-                            Selected as a top trainee in an industry-backed program. Led two teams to
-                            build a healthcare systems. Applied Agile, TDD, and CI/CD, for efficient, real-world
-                            deployment.
-                        </p>
-                    </div>
-
-                    <div class="workeduc-content">
-                        <h4 class="year">
-                            <img src="assets/calendar-alt.png" alt="">
-                            Feb 2022 - Sept 2024
-                        </h4>
-                        <h3>Full Stack Engineer & Team Lead - Alltimepreneur Hub</h3>
-                        <p>
-                            Spearheaded an ed-fintech platform, driving 300+ early adopters. Built scalable
-                            Node.js/React stack, optimized APIs, and collaborated on UX to boost engagement and
-                            growth.
-                        </p>
-                    </div>
-
-                    <div class="workeduc-content">
-                        <h4 class="year">
-                            <img src="assets/calendar-alt.png" alt="">
-                            June 2019 - Dec 2020
-                        </h4>
-                        <h3>Technical Collaborator & Customer Acquisition Lead - Parizzo Rideshare</h3>
-                        <p>
-                            Collaborated with the dev team on the Parrizzo Rideshare platform, aligning tech with
-                            user acquisition goals. Drove acquisition strategy, enhancing retention through
-                            cross-team collaboration.
-                        </p>
-                    </div>
+                    <!-- Forward chevron -->
+                    <span class="nextprev-btn next" data-page="turn-1">
+                        <img src="assets/chevrons-right.png" alt="">
+                    </span>
                 </div>
 
-                <span class="number-page">2</span>
+                <!-- Back: Work Experience (Page 2) -->
+                <div class="page-back">
+                    <h1 class="title">Work Experience</h1>
 
-                <!-- next page button -->
-                <span class="nextprev-btn next" data-page="turn-1">
-                    <img src="assets/chevrons-right.png" alt="">
-                </span>
+                    <div class="workeduc-box">
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                Feb 2025 - Present
+                            </h4>
+                            <h3>Full Stack Engineer & Team Lead (Software Techpreneurship) - Semicolon Africa</h3>
+                            <p>Selected as a top trainee in an industry-backed program. Led two teams to build a
+                                healthcare
+                                systems. Applied Agile, TDD, and CI/CD, for efficient, real-world deployment.</p>
+                        </div>
+
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                Feb 2022 - Sept 2024
+                            </h4>
+                            <h3>Full Stack Engineer & Team Lead - Alltimepreneur Hub</h3>
+                            <p>Spearheaded an ed-fintech platform, driving 300+ early adopters. Built scalable
+                                Node.js/React
+                                stack, optimized APIs, and collaborated on UX to boost engagement and growth.</p>
+                        </div>
+
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                June 2019 - Dec 2020
+                            </h4>
+                            <h3>Technical Collaborator & Customer Acquisition Lead - Parizzo Rideshare</h3>
+                            <p>Collaborated with the dev team on the Parrizzo Rideshare platform, aligning tech with
+                                user
+                                acquisition goals. Drove acquisition strategy, enhancing retention through cross-team
+                                collaboration.</p>
+                        </div>
+                    </div>
+
+                    <span class="number-page">2</span>
+                </div>
             </div>
 
             <!-- Spread 2 -->
-            <!-- page 3: Education -->
-            <div class="book-page page-left " id="turn-2-left">
-                <h1 class="title">Education</h1>
+            <!-- Flipping element: Front = Education, Back = What I Can Do -->
+            <div class="book-page" id="turn-2">
+                <!-- Front: Education (Page 3) -->
+                <div class="page-front">
+                    <h1 class="title">Education</h1>
 
-                <div class="workeduc-box">
-                    <div class="workeduc-content">
-                        <h4 class="year">
-                            <img src="assets/calendar-alt.png" alt="">
-                            Feb 2025
-                        </h4>
-                        <h3>Semicolon Africa</h3>
-                        <ul>
-                            <li>Certificate in Full-Stack Software Engineering</li>
-                            <li>Certificate in Business Management (w/ Henley Business School UK)</li>
-                        </ul>
+                    <div class="workeduc-box">
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                Feb 2025
+                            </h4>
+                            <h3>Semicolon Africa</h3>
+                            <ul>
+                                <li>Certificate in Full-Stack Software Engineering</li>
+                                <li>Certificate in Business Management (w/ Henley Business School UK)</li>
+                            </ul>
+                        </div>
+
+                        <div class="workeduc-content">
+                            <h4 class="year">
+                                <img src="assets/calendar-alt.png" alt="">
+                                Feb 2021 - Present
+                            </h4>
+                            <h3>Independent Learning Path</h3>
+                            <ul>
+                                <li>Self-Taught Full Stack Developer (Continuous Learning Mindset)</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="workeduc-content">
-                        <h4 class="year">
-                            <img src="assets/calendar-alt.png" alt="">
-                            Feb 2021 - Present
-                        </h4>
-                        <h3>Independent Learning Path</h3>
-                        <ul>
-                            <li>Self-Taught Full Stack Developer (Continuous Learning Mindset)</li>
-                        </ul>
-                    </div>
+                    <span class="number-page">3</span>
+
+                    <!-- Back chevron -->
+                    <span class="nextprev-btn back" data-page="turn-1">
+                        <img src="assets/chevrons-left.png" alt="">
+                    </span>
+
+                    <!-- Forward chevron -->
+                    <span class="nextprev-btn next" data-page="turn-2">
+                        <img src="assets/chevrons-right.png" alt="">
+                    </span>
                 </div>
 
-                <span class="number-page">3</span>
+                <!-- Back: What I Can Do (Page 4) -->
+                <div class="page-back">
+                    <h1 class="title">What I Can Do</h1>
 
-                <!-- prev page button -->
-                <span class="nextprev-btn back" data-page="turn-1">
-                    <img src="assets/chevrons-left.png" alt="">
-                </span>
-            </div>
+                    <div class="services-box">
+                        <div class="services-content">
+                            <img src="assets/rocket.png" alt="">
+                            <h3>MVP Development</h3>
+                            <p>I design and deliver production-ready MVPs, handling frontend, backend, databases and
+                                cloud
+                                hosting.</p>
+                        </div>
 
-            <!-- page 4: What I Can Do -->
-            <div class="book-page page-right  " id="turn-2">
-                <h1 class="title">What I Can Do</h1>
+                        <div class="services-content">
+                            <img src="assets/link.png" alt="">
+                            <h3>API Architecture</h3>
+                            <p>I architect and build scalable RESTful APIs with microservices and a test-driven
+                                approach.</p>
+                        </div>
 
-                <div class="services-box">
-                    <div class="services-content">
-                        <img src="assets/rocket.png" alt="">
-                        <h3>MVP Development</h3>
-                        <p>I design and deliver production-ready MVPs, handling frontend, backend, databases and
-                            cloud hosting.</p>
-                        <!-- <a href="#" class="btn">Read More</a> -->
+                        <div class="services-content">
+                            <img src="assets/cloud.png" alt="">
+                            <h3>Cloud Deployment</h3>
+                            <p>I build, containerize and deploy full stack web apps with CI/CD pipelines for
+                                scalability.</p>
+                        </div>
+
+                        <div class="services-content">
+                            <img src="assets/bolt.png" alt="">
+                            <h3>UX Optimization</h3>
+                            <p>I optimize web apps for performance, accessibility and SEO for quicker load times and
+                                optimum
+                                user experience.</p>
+                        </div>
                     </div>
 
-                    <div class="services-content">
-                        <img src="assets/link.png" alt="">
-                        <h3>API Architecture</h3>
-                        <p>I architect and build scalable RESTful APIs with microservices and a test driven
-                            approach.</p>
-                        <!-- <a href="#" class="btn">Read More</a> -->
-                    </div>
-
-                    <div class="services-content">
-                        <img src="assets/cloud.png" alt="">
-                        <h3>Cloud Deployment</h3>
-                        <p>I build, containerize and deploy full stack web apps with CI/CD pipelines for
-                            scalability.</p>
-                        <!-- <a href="#" class="btn">Read More</a> -->
-                    </div>
-
-                    <div class="services-content">
-                        <img src="assets/bolt.png" alt="">
-                        <h3>UX Optimization</h3>
-                        <p>I optimize web apps for performance, accessibility and SEO for quicker load times and
-                            optimum user experience.</p>
-                        <!-- <a href="#" class="btn">Read More</a> -->
-                    </div>
+                    <span class="number-page">4</span>
                 </div>
-
-                <span class="number-page">4</span>
-
-                <!-- next page button -->
-                <span class="nextprev-btn next" data-page="turn-2">
-                    <img src="assets/chevrons-right.png" alt="">
-                </span>
             </div>
 
             <!-- Spread 3 -->
-            <!-- page 5: My Toolbox -->
-            <div class="book-page page-left " id="turn-3-left">
-                <h1 class="title">My ToolBox</h1>
+            <!-- Flipping element: Front = My Toolbox, Back = Latest Project -->
+            <div class="book-page" id="turn-3">
+                <!-- Front: My Toolbox (Page 5) -->
+                <div class="page-front">
+                    <h1 class="title">My ToolBox</h1>
 
-                <div class="skills-box">
-                    <div class="skills-content">
-                        <h3>Frontend</h3>
-                        <div class="content">
-                            <span><img src="assets/javascript.png" alt="">JavaScript</span>
-                            <span><img src="assets/react.png" alt="">React</span>
-                            <span><img src="assets/typescript.png" alt="">TypeScript</span>
-                            <span><img src="assets/html5.png" alt="">HTML</span>
-                            <span><img src="assets/css3.png" alt="">CSS</span>
-                            <span><img src="assets/tailwind-css.png" alt="">Tailwind</span>
-                            <span><img src="assets/figma.png" alt="">Figma</span>
+                    <div class="skills-box">
+                        <div class="skills-content">
+                            <h3>Frontend</h3>
+                            <div class="content">
+                                <span><img src="assets/javascript.png" alt="">JavaScript</span>
+                                <span><img src="assets/react.png" alt="">React</span>
+                                <span><img src="assets/typescript.png" alt="">TypeScript</span>
+                                <span><img src="assets/html5.png" alt="">HTML</span>
+                                <span><img src="assets/css3.png" alt="">CSS</span>
+                                <span><img src="assets/tailwind-css.png" alt="">Tailwind</span>
+                                <span><img src="assets/figma.png" alt="">Figma</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-content">
+                            <h3>Backend</h3>
+                            <div class="content">
+                                <span><img src="assets/java.png" alt="">Java</span>
+                                <span><img src="assets/python.png" alt="">Python</span>
+                                <span><img src="assets/nodejs.png" alt="">Node.js</span>
+                                <span><img src="assets/express-js.png" alt="">Express.js</span>
+                                <span><img src="assets/jwt.png" alt="">JWT</span>
+                                <span><img src="assets/go-lang.png" alt="">Go</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-content">
+                            <h3>Databases</h3>
+                            <div class="content">
+                                <span><img src="assets/my-sql.png" alt="">MySQL</span>
+                                <span><img src="assets/mongodb.png" alt="">MongoDB</span>
+                                <span><img src="assets/firebase.png" alt="">Firebase</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-content">
+                            <h3>DevOps & Cloud</h3>
+                            <div class="content">
+                                <span><img src="assets/aws.png" alt="">AWS</span>
+                                <span><img src="assets/docker.png" alt="">Docker</span>
+                                <span><img src="assets/kubernetes.png" alt="">Kubernetes</span>
+                                <span><img src="assets/netlify.png" alt="">Netlify</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-content">
+                            <h3>Tools & Workflow</h3>
+                            <div class="content">
+                                <span><img src="assets/icons8-postman-api-25.png" height="25px" width="25px"
+                                        alt="">Postman</span>
+                                <span><img src="assets/bash.png" alt="">Bash</span>
+                                <span><img src="assets/icons8-intellij-25.png" height="25px" width="25px"
+                                        alt="">IntelliJ</span>
+                                <span><img src="assets/visual-studio.png" alt="">VSCode</span>
+                                <span><img src="assets/git.png" alt="">Git</span>
+                                <span><img src="assets/github.png" alt="">Github</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="skills-content">
-                        <h3>Backend</h3>
-                        <div class="content">
-                            <span><img src="assets/java.png" alt="">Java</span>
-                            <span><img src="assets/python.png" alt="">Python</span>
-                            <span><img src="assets/nodejs.png" alt="">Node.js</span>
-                            <span><img src="assets/express-js.png" alt="">Express.js</span>
-                            <span><img src="assets/jwt.png" alt="">JWT</span>
-                            <span><img src="assets/go-lang.png" alt="">Go</span>
-                        </div>
-                    </div>
+                    <span class="number-page">5</span>
 
-                    <div class="skills-content">
-                        <h3>Databases</h3>
-                        <div class="content">
-                            <span><img src="assets/my-sql.png" alt="">MySQL</span>
-                            <span><img src="assets/mongodb.png" alt="">MongoDB</span>
-                            <span><img src="assets/firebase.png" alt="">Firebase</span>
-                        </div>
-                    </div>
+                    <!-- Back chevron -->
+                    <span class="nextprev-btn back" data-page="turn-2">
+                        <img src="assets/chevrons-left.png" alt="">
+                    </span>
 
-                    <div class="skills-content">
-                        <h3>DevOps & Cloud</h3>
-                        <div class="content">
-                            <span><img src="assets/aws.png" alt="">AWS</span>
-                            <span><img src="assets/docker.png" alt="">Docker</span>
-                            <span><img src="assets/kubernetes.png" alt="">Kubernetes</span>
-                            <span><img src="assets/netlify.png" alt="">Netlify</span>
-                        </div>
-                    </div>
-
-                    <div class="skills-content">
-                        <h3>Tools & Workflow</h3>
-                        <div class="content">
-                            <span><img src="assets/icons8-postman-api-25.png" height=".25px" width="25px"
-                                    alt="">Postman</span>
-                            <span><img src="assets/bash.png" alt="">Bash</span>
-                            <span><img src="assets/icons8-intellij-25.png" height="25px" width="25px"
-                                    alt="">IntelliJ</span>
-                            <span><img src="assets/visual-studio.png" alt="">VSCode</span>
-                            <span><img src="assets/git.png" alt="">Git</span>
-                            <span><img src="assets/github.png" alt="">Github</span>
-                        </div>
-                    </div>
+                    <!-- Forward chevron -->
+                    <span class="nextprev-btn next" data-page="turn-3">
+                        <img src="assets/chevrons-right.png" alt="">
+                    </span>
                 </div>
 
-                <span class="number-page">5</span>
+                <!-- Back: Latest Project (Page 6) -->
+                <div class="page-back">
+                    <h1 class="title">Latest Project</h1>
 
-                <!-- prev page button -->
-                <span class="nextprev-btn back" data-page="turn-2">
-                    <img src="assets/chevrons-left.png" alt="">
-                </span>
-            </div>
-
-            <!-- Page 6: Latest Project -->
-            <div class="book-page page-right " id="turn-3">
-                <h1 class="title">Latest Project</h1>
-
-                <div class="portfolio-box">
-                    <div class="img-box">
-                        <img src="assets/Recent-Project.png" alt="">
-                    </div>
-
-                    <div class="info-box">
-                        <div class="info-title">
-                            <h3>TrackSpense</h3>
-                            <a href="#">Live Preview<img src="assets/external-link.png" width="20rem" height="20rem"
-                                    alt=""></a>
+                    <div class="portfolio-box">
+                        <div class="img-box">
+                            <img src="assets/Recent-Project.png" alt="">
                         </div>
-                        <div class="project-desc">
-                            <p>What's this?</p>
-                            <ul>
-                                <li>
-                                    An analytics tool that transforms transaction data into actionable insights via real-time dashboards.
-                                </li>
-                            </ul>
+
+                        <div class="info-box">
+                            <div class="info-title">
+                                <h3>TrackSpense</h3>
+                                <a href="#">Live Preview<img src="assets/external-link.png" width="20rem" height="20rem"
+                                        alt=""></a>
+                            </div>
+                            <div class="project-desc">
+                                <p>What's this?</p>
+                                <ul>
+                                    <li>An analytics tool that transforms transaction data into actionable insights via
+                                        real-time dashboards.</li>
+                                </ul>
+                            </div>
+                            <div class="project-stack">
+                                <p>Tech Stack</p>
+                                <ul>
+                                    <li>Spring Boot backend with MongoDB aggregation pipelines for efficient trend
+                                        detection and
+                                        reporting.</li>
+                                    <li>Interactive Chart.js visualizations to display spending patterns and financial
+                                        health
+                                        metrics.</li>
+                                    <li>JavaScript (Porting to React for V2)</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="project-stack">
-                            <p>Tech Stack</p>
-                            <ul>
-                                <li>Spring Boot backend with MongoDB aggregation pipelines for efficient trend
-                                    detection and reporting.
-                                </li>
-                                <li>Interactive Chart.js visualizations to display spending patterns and
-                                    financial health metrics.
-                                </li>
-                                <li>JavaScript (Porting to React for V2)</li>
-                            </ul>
+
+                        <div class="btn-box">
+                            <a href="https://github.com/rootikigai/TrackSpense_Backend" class="btn">Source Code</a>
+                            <a href="https://github.com/rootikigai?tab=repositories" class="btn">More Projects</a>
                         </div>
                     </div>
 
-                    <div class="btn-box">
-                        <a href="https://github.com/rootikigai/TrackSpense_Backend" class="btn">Source Code</a>
-                        <a href="https://github.com/rootikigai?tab=repositories" class="btn">More Projects</a>
-                    </div>
+                    <span class="number-page">6</span>
                 </div>
-
-                <span class="number-page">6</span>
-
-                <!-- next page button -->
-                <span class="nextprev-btn next" data-page="turn-3">
-                    <img src="assets/chevrons-right.png" alt="">
-                </span>
             </div>
 
             <!-- Spread 4 -->
-            <!-- Page 7: Contact Me -->
-            <div class="book-page page-left " id="turn-4-left">
-                <h1 class="title">Contact Me</h1>
+            <!-- Flipping element: Front = Contact Me (last page, no forward flip) -->
+            <div class="book-page" id="turn-4">
+                <!-- Front: Contact Me (Page 7) -->
+                <div class="page-front">
+                    <h1 class="title">Contact Me</h1>
 
-                <div class="contact-box">
-                    <form action="#">
-                        <input type="text" class="field" placeholder="Full Name" required>
-                        <input type="email" class="field" placeholder="Email Address" required>
-                        <textarea class="field" placeholder="Your Message" required></textarea>
-                        <input type="submit" class="btn" value="Send Message">
-                    </form>
+                    <div class="contact-box">
+                        <form action="#">
+                            <input type="text" class="field" placeholder="Full Name" required>
+                            <input type="email" class="field" placeholder="Email Address" required>
+                            <textarea class="field" placeholder="Your Message" required></textarea>
+                            <input type="submit" class="btn" value="Send Message">
+                        </form>
+                    </div>
+
+                    <span class="number-page">7</span>
+
+                    <!-- Back chevron only — no forward chevron on last page -->
+                    <span class="nextprev-btn back" data-page="turn-3">
+                        <img src="assets/chevrons-left.png" alt="">
+                    </span>
+
+                    <a href="" class="back-profile">
+                        <img src="assets/user.png" alt="">
+                        <p>Profile</p>
+                    </a>
                 </div>
-
-                <span class="number-page">7</span>
-
-                <!-- prev page button -->
-                <span class="nextprev-btn back" data-page="turn-3">
-                    <img src="assets/chevrons-left.png" alt="">
-                </span>
-
-                <a href="" class="back-profile">
-                    <img src="assets/user.png" alt="">
-                    <p>Profile</p>
-                </a>
-            </div>
-
-            <!-- Back Cover (blank) -->
-            <div class="book-page page-right no-flip" id="turn-4">
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 
