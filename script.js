@@ -1,61 +1,25 @@
 // ── Page Configuration ──
-// Each spread defines which right page flips, and which left page it reveals
-const spreads = [
-    { rightPage: 'turn-1', leftPage: null },        // Spread 1: flip reveals spread 2
-    { rightPage: 'turn-2', leftPage: 'turn-2-left' }, // Spread 2: flip reveals spread 3
-    { rightPage: 'turn-3', leftPage: 'turn-3-left' }, // Spread 3: flip reveals spread 4
-    { rightPage: 'turn-4', leftPage: 'turn-4-left' }, // Spread 4: back cover
-];
-
-// Track current spread (0-indexed)
-let currentSpread = 0;
+// Pages in order — each flips to reveal its back face
+const pages = ['turn-1', 'turn-2', 'turn-3', 'turn-4'];
+let currentPage = 0;
 
 // ── Flip Forward ──
 function flipForward() {
-    if (currentSpread >= spreads.length - 1) return;
-
-    const current = spreads[currentSpread];
-    const next = spreads[currentSpread + 1];
-
-    // Flip current right page over
-    const rightPage = document.getElementById(current.rightPage);
-    rightPage.classList.add('turn');
-
-    // After flip completes, drop its z-index below the left page
-    // setTimeout(() => {
-    //     rightPage.style.zIndex = 0;
-    // }, 1000);
-
-    // Reveal next left page
-    if (next.leftPage) {
-        const leftPage = document.getElementById(next.leftPage);
-        leftPage.style.visibility = 'visible';
-    }
-
-    currentSpread++;
+    if (currentPage >= pages.length) return;
+    const page = document.getElementById(pages[currentPage]);
+    page.classList.add('turn');
+    // Bring flipped page above unflipped pages
+    page.style.zIndex = 10 + currentPage;
+    currentPage++;
 }
 
 // ── Flip Backward ──
 function flipBackward() {
-    if (currentSpread <= 0) return;
-
-    const current = spreads[currentSpread];
-    const prev = spreads[currentSpread - 1];
-
-    // Flip previous right page back
-    const rightPage = document.getElementById(prev.rightPage);
-    rightPage.classList.remove('turn');
-    // rightPage.style.zIndex = '';
-
-    // Hide current left page
-    if (current.leftPage) {
-        const leftPage = document.getElementById(current.leftPage);
-        setTimeout(() => {
-            leftPage.style.visibility = 'hidden';
-        }, 1000);
-    }
-
-    currentSpread--;
+    if (currentPage <= 0) return;
+    currentPage--;
+    const page = document.getElementById(pages[currentPage]);
+    page.classList.remove('turn');
+    page.style.zIndex = 4 - currentPage;
 }
 
 // ── Attach Chevron Clicks ──
@@ -74,3 +38,16 @@ window.addEventListener('load', () => {
     const book = document.querySelector('.book');
     book.style.visibility = 'visible';
 });
+
+// ── Scale wrapper to fit viewport ──
+function scaleWrapper() {
+    const wrapper = document.querySelector('.wrapper');
+    const scaleX = (window.innerWidth * 0.95) / wrapper.offsetWidth;
+    const scaleY = (window.innerHeight * 0.95) / wrapper.offsetHeight;
+    const scale = Math.min(scaleX, scaleY, 1);
+    wrapper.style.transform = `scale(${scale})`;
+    wrapper.style.transformOrigin = 'center center';
+}
+
+scaleWrapper();
+window.addEventListener('resize', scaleWrapper);
