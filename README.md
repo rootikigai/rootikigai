@@ -1,9 +1,7 @@
 # Kelvin Ifeanyi — My All-Inclusive Interactive Portfolio
+## https://rootikigai.vercel.app
 
 A lightweight, book-style portfolio built with HTML, CSS and vanilla JavaScript. The layout simulates a physical book where pages turn when the chevron buttons are clicked. This portfolio project showcases my skills, experience, projects and contact information.
-
-## Demo
-Open `index.html` in your browser or serve the project with a static server (recommended) to ensure assets and scripts load correctly.
 
 ## Features
 - Book-like page-turn animation (CSS 3D + JavaScript)
