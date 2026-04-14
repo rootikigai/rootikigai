@@ -44,8 +44,10 @@ I'm currently focused on DevOps and AI-driven automation—using LLMs and agenti
 - Freelancing as a Software Engineer for U.S, UK and Canadian startups
 - Open to full-time remote opportunities where I can solve problems with great teams
 
-## Let's Connect
-- [Click to send me an email](mailto:rootikigai@gmail.com?subject=Inquiry&body=Hi%20there,%20Kelvin,)
+## Let's Connect 
+#### *(Hold CTRL or CMD and click to open in a new tab.)*
+- [Send me an email.](mailto:rootikigai@gmail.com?subject=Inquiry&body=Hi%20there,%20Kelvin,)
+- [Send me a WhatsApp message](https://wa.me/+2348035859351?text=Hi%20Kelvin!%20Here,%20from%20GitHub.)   
+- [My Portfolio Suitcase.](https://rootikigai.vercel.app)
 - [LinkedIn? Gain a valued connect.](https://linkedin.com/in/rootikigai)
-- [My Portfolio Suitcase](https://rootikigai.vercel.app)
 - [How about X?](https://x.com/rootikigai)
