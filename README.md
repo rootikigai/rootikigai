@@ -1,40 +1,53 @@
-# Kelvin Ifeanyi — My All-Inclusive Interactive Portfolio
+# Hola! 
+# Kelvin Ifeanyi here 👋
 
-A lightweight, book-style portfolio built with HTML, CSS and vanilla JavaScript. The layout simulates a physical book where pages turn when the chevron buttons are clicked. This portfolio project showcases my skills, experience, projects and contact information.
+I own a computer and solve real world problems with it...basically!
 
-## Demo
-Open `index.html` in your browser or serve the project with a static server (recommended) to ensure assets and scripts load correctly.
+Full-stack engineer who builds production systems that solve real problems. I care about clean code, pragmatic architecture, and shipping software that people actually use.
 
-## Features
-- Book-like page-turn animation (CSS 3D + JavaScript)
-- Profile page with social links and CV button
-- Work experience, education, services and skills pages
-- Latest project showcase and contact form
-- Fully static — no backend required
+## What I Build
+I work across the stack with JavaScript/TypeScript, Node.js, React, Java (Spring Boot), Python, and Go. 
 
-## Tech Stack
-- HTML5
-- CSS3 (flexbox, transforms, transitions)
-- Vanilla JavaScript
-- Static assets stored in `/assets`
+I'm currently focused on DevOps and AI-driven automation—using LLMs and agentic architectures to build intelligent systems that handle complexity gracefully.
 
-## Getting Started
-1. Clone or download the repository.
-2. From the project root, open `index.html` in your browser:
-   - Double-click `index.html` or
-   - Serve with a local server (recommended):
-     - VS Code: use the Live Server extension
+### Recent work:
 
-## Usage
-- Click the chevron icons to turn pages forward/backward.
-- The page-turn behavior is handled in `script.js`.
-- Page content is in `index.html` and styles are in `styles.css`.
+- #### KuriosKids – Production AI learning platform for children (ages 4-12) using agentic LLM architecture with tool-calling agents, content safety guardrails, and optimized prompt engineering
 
-## File Structure (key files)
-- index.html — main markup
-- styles.css — all styling
-- script.js — page-turn logic
-- /assets — images and icons
+- #### Go2geda – Corporate carpool platform with PostgreSQL geo-matching, deployed as microservices on Azure with Docker
 
-## License
-MIT — feel free to reuse and modify. Be wise enough to add your personal touch...no just do copy copy!
+- #### TrackSpense – Financial behavior analytics platform using Spring Boot + MongoDB aggregation pipelines to surface spending patterns
+
+- #### MediSa – Drug dispensary platform with Django backend, MongoDB integration, and Docker deployment on AWS
+
+## What I Use
+- #### My PC obviously 😏
+- #### Languages: JavaScript (ES6+), TypeScript, Java, Python, Go
+- #### Frontend: React, Next.js, Vue.js, Tailwind CSS
+- #### Backend: Node.js, Express, NestJS, Spring Boot, Django
+- #### Databases: MongoDB, PostgreSQL, MySQL
+- #### AI/ML: LangChain, OpenAI API, Gemini API, prompt engineering, agentic systems
+- #### DevOps: Docker, AWS, Azure, CI/CD (GitHub Actions), Git
+
+## What I Care About
+
+- End-to-end ownership – I don't just write code; I ship features, own outcomes, and iterate based on real user feedback
+- Pragmatic AI – I use AI where it delivers measurable value, not because it's trendy. LLMs are tools, not magic
+- Clean, testable code – TDD practitioner, peer reviewer, believer in code that future-me won't hate
+- Cross-functional collaboration – I've led teams, bridged technical/business stakeholders, and driven Agile sprints from requirements to production
+
+
+## Currently I Am:
+
+- Building AI-powered systems that automate complex workflows
+- Deeply exploring into modern TypeScript patterns (tRPC, Drizzle ORM, ZOD)
+- Freelancing as a Software Engineer for U.S, UK and Canadian startups
+- Open to full-time remote opportunities where I can solve problems with great teams
+
+## Let's Connect 
+#### *(Hold CTRL or CMD and click to open in a new tab.)*
+- [Send me an email.](mailto:rootikigai@gmail.com?subject=Inquiry&body=Hi%20there,%20Kelvin,)
+- [Send me a WhatsApp message](https://wa.me/+2348035859351?text=Hi%20Kelvin!%20Here,%20from%20GitHub.)   
+- [My Portfolio Suitcase.](https://rootikigai.vercel.app)
+- [LinkedIn? Gain a valued connect.](https://linkedin.com/in/rootikigai)
+- [How about X?](https://x.com/rootikigai)
