@@ -10,7 +10,7 @@
         content="Ogechukwu N. (IKIGAI) - Software Engineer specializing in Spring Boot, Python, React, Node.js, Docker and CI/CD. Building scalable web apps and microservices.">
     <link rel="stylesheet" href="styles.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="assets/ikigai-icon.png">
 </head>
 
 <body>
@@ -29,17 +29,17 @@
                         <h3>Software Engineer</h3>
 
                         <div class="social-media">
-                            <a href="https://github.com/rootikigai">
+                            <a href="https://github.com/rootikigai" aria-label="GitHub">
                                 <i class='bx bxl-github'></i>
                             </a>
-                            <a href="https://x.com/rootikigai">
+                            <a href="https://x.com/rootikigai" aria-label="X">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                     fill="currentColor">
                                     <path
                                         d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                 </svg>
                             </a>
-                            <a href="https://linkedin.com/in/rootikigai">
+                            <a href="https://linkedin.com/in/rootikigai" aria-label="LinkedIn">
                                 <i class='bx bxl-linkedin'></i>
                             </a>
                         </div>
@@ -74,7 +74,7 @@
                                 Feb 2025 - Present
                             </h4>
                             <h3>Full Stack Engineer & Team Lead (Software Techpreneurship) - Semicolon Africa</h3>
-                            <p>Selected as a top trainee in an industry-backed program. Led two teams to build a
+                            <p>Selected as a top trainee in an industry-backed program. Led two teams to build
                                 healthcare
                                 systems. Applied Agile, TDD, and CI/CD, for efficient, real-world deployment.</p>
                         </div>
@@ -96,7 +96,7 @@
                                 June 2019 - Dec 2020
                             </h4>
                             <h3>Technical Collaborator & Customer Acquisition Lead - Parizzo Rideshare</h3>
-                            <p>Collaborated with the dev team on the Parrizzo Rideshare platform, aligning tech with
+                            <p>Collaborated with the dev team on the Parizzo Rideshare platform, aligning tech with
                                 user
                                 acquisition goals. Drove acquisition strategy, enhancing retention through cross-team
                                 collaboration.</p>
@@ -292,42 +292,39 @@
 
                 <!-- Back: Latest Project (Page 6) -->
                 <div class="page-back">
-                    <h1 class="title">Latest Project</h1>
+                    <h1 class="title">Featured Project</h1>
 
                     <div class="portfolio-box">
                         <div class="img-box">
-                            <img src="assets/trackspense_pic.png" alt="Trackspense Analytics Dashboard preview">
+                            <img src="assets/techdemy.jpg" alt="Techdemy LMS student home, with cohort, curriculum, and deadlines">
                         </div>
 
                         <div class="info-box">
                             <div class="info-title">
-                                <h3>TrackSpense</h3>
-                                <a href="#">Live Preview<img src="assets/external-link.png" width="20rem" height="20rem"
-                                        alt=""></a>
+                                <h3>Techdemy LMS</h3>
+                                <a class="project-kind" href="https://techdemy.ng" target="_blank" rel="noopener noreferrer">View live</a>
                             </div>
                             <div class="project-desc">
-                                <p>What's this?</p>
+                                <p>What it is</p>
                                 <ul>
-                                    <li>An analytics tool that transforms transaction data into actionable insights via
-                                        real-time dashboards.</li>
+                                    <li>A cohort learning platform for Techdemy. It replaced WhatsApp and Google Drive for a pilot cohort of about 50 students.</li>
+                                    <li>Registration only creates an account. Admission is what creates a student.</li>
+                                    <li>Until admission, there is no Student ID, no cohort, and the dashboard stays nearly empty.</li>
+                                    <li>Admission is the one event that issues a Student ID, attaches a cohort, and joins the cohort group chat.</li>
                                 </ul>
                             </div>
                             <div class="project-stack">
-                                <p>Tech Stack</p>
+                                <p>How it's built</p>
                                 <ul>
-                                    <li>React (V2)</li>
-                                    <li>Spring Boot backend with MongoDB aggregation pipelines for efficient trend
-                                        detection and
-                                        reporting.</li>
-                                    <li>React Charts visualizations to display spending patterns and financial
-                                        health
-                                        metrics.</li>
+                                    <li>TypeScript across a Next.js web app and a NestJS API.</li>
+                                    <li>TanStack Query for server data. UI state stays separate from that.</li>
+                                    <li>PostgreSQL for records, Redis for cache and queues, and a separate worker for background jobs.</li>
+                                    <li>Course files stay in private storage and open only through short-lived links.</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="btn-box">
-                            <a href="https://github.com/rootikigai/TrackSpense_Backend" class="btn">Source Code</a>
                             <a href="https://github.com/rootikigai?tab=repositories" class="btn">More Projects</a>
                         </div>
                     </div>
@@ -354,9 +351,9 @@
 
                     <div class="contact-box">
                         <form action="#">
-                            <input type="text" class="field" placeholder="Full Name" required>
-                            <input type="email" class="field" placeholder="Email Address" required>
-                            <textarea class="field" placeholder="Your Message" required></textarea>
+                            <input type="text" name="name" class="field" placeholder="Full Name" autocomplete="name" required>
+                            <input type="email" name="email" class="field" placeholder="Email Address" autocomplete="email" required>
+                            <textarea name="message" class="field" placeholder="Your Message" required></textarea>
                             <input type="submit" class="btn" value="Send Message">
                         </form>
                     </div>
@@ -374,6 +371,22 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <button type="button" class="jotter-hint jotter-hint-prev">
+        <span class="jotter-hint-icon" aria-hidden="true">
+            <img src="assets/chevrons-right.png" alt="">
+        </span>
+        <span>Flip down to the previous page</span>
+    </button>
+    <div class="jotter-footer">
+        <button type="button" class="jotter-hint jotter-hint-next">
+            <span class="jotter-hint-icon" aria-hidden="true">
+                <img src="assets/chevrons-right.png" alt="">
+            </span>
+            <span>Flip up to the next page</span>
+        </button>
+        <span class="jotter-page-num" aria-live="polite">1</span>
     </div>
 
     <script src="script.js"></script>

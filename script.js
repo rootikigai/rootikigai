@@ -22,8 +22,8 @@ let currentFace = 0;
 
 // ── Mobile: Show Face ──
 function showFace(index) {
-  // Hide all page faces
-  document.querySelectorAll('.book-page').forEach(p => {
+  // Hide real pages. Leave a jotter sheet alone so it can flip off the stack.
+  document.querySelectorAll('.book-page:not(.jotter-sheet)').forEach(p => {
     p.style.display = 'none';
   });
 
@@ -46,24 +46,147 @@ function showFace(index) {
     if (front) front.style.display = 'none';
     if (back) back.style.display = 'block';
   }
+
+  updateJotterHint();
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function visibleFaceElement() {
+  const target = mobileFaces[currentFace];
+  if (!target) return null;
+  const pageEl = document.getElementById(target.page);
+  if (!pageEl) return null;
+  return pageEl.querySelector(target.face === 'front' ? '.page-front' : '.page-back');
+}
+
+function updateJotterHint() {
+  const next = document.querySelector('.jotter-hint-next');
+  const prev = document.querySelector('.jotter-hint-prev');
+  const atEnd = currentFace >= mobileFaces.length - 1;
+  const atStart = currentFace <= 0;
+  if (next) {
+    next.classList.toggle('is-done', atEnd);
+    next.disabled = atEnd;
+  }
+  if (prev) {
+    prev.classList.toggle('is-done', atStart);
+    prev.disabled = atStart;
+  }
+  document.body.classList.toggle('jotter-has-prev', isMobile() && !atStart);
+  document.body.classList.toggle('jotter-has-next', isMobile() && !atEnd);
+  const pageNum = document.querySelector('.jotter-page-num');
+  if (pageNum) pageNum.textContent = String(currentFace + 1);
+}
+
+function clearJotterSheets() {
+  document.querySelectorAll('.jotter-sheet').forEach(sheet => sheet.remove());
+}
+
+function makeJotterSheet(faceEl) {
+  const sheet = document.createElement('div');
+  sheet.className = 'book-page jotter-sheet';
+  sheet.style.display = 'block';
+  sheet.setAttribute('aria-hidden', 'true');
+  const face = faceEl.cloneNode(true);
+  face.style.overflow = 'hidden';
+  sheet.appendChild(face);
+  const back = document.createElement('div');
+  back.className = 'jotter-backface';
+  sheet.appendChild(back);
+  document.querySelector('.book').appendChild(sheet);
+  return sheet;
+}
+
+function whenJotterSettles(sheet, done) {
+  const finish = (event) => {
+    if (event && event.propertyName && event.propertyName !== 'transform') return;
+    if (sheet.dataset.done === '1') return;
+    sheet.dataset.done = '1';
+    sheet.removeEventListener('transitionend', finish);
+    done();
+  };
+  sheet.addEventListener('transitionend', finish);
+  setTimeout(() => finish(), 1100);
+}
+
+// Lift the current sheet up to reveal the next one, or drop the previous sheet back down.
+function jotterTo(nextIndex) {
+  if (isAnimating) return;
+  if (nextIndex < 0 || nextIndex >= mobileFaces.length || nextIndex === currentFace) return;
+
+  if (prefersReducedMotion()) {
+    currentFace = nextIndex;
+    showFace(currentFace);
+    return;
+  }
+
+  const forward = nextIndex > currentFace;
+  isAnimating = true;
+  bookEl.classList.add('is-jotter-turning');
+
+  if (forward) {
+    const faceEl = visibleFaceElement();
+    if (!faceEl) {
+      currentFace = nextIndex;
+      showFace(currentFace);
+      bookEl.classList.remove('is-jotter-turning');
+      isAnimating = false;
+      return;
+    }
+    const sheet = makeJotterSheet(faceEl);
+    currentFace = nextIndex;
+    showFace(currentFace);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => sheet.classList.add('is-flipping'));
+    });
+    whenJotterSettles(sheet, () => {
+      sheet.remove();
+      bookEl.classList.remove('is-jotter-turning');
+      isAnimating = false;
+    });
+    return;
+  }
+
+  currentFace = nextIndex;
+  showFace(currentFace);
+  const faceEl = visibleFaceElement();
+  if (!faceEl) {
+    bookEl.classList.remove('is-jotter-turning');
+    isAnimating = false;
+    return;
+  }
+  const sheet = makeJotterSheet(faceEl);
+  sheet.classList.add('is-flipping');
+  sheet.style.transition = 'none';
+  void sheet.offsetWidth;
+  sheet.style.transition = '';
+  requestAnimationFrame(() => sheet.classList.remove('is-flipping'));
+  whenJotterSettles(sheet, () => {
+    sheet.remove();
+    bookEl.classList.remove('is-jotter-turning');
+    isAnimating = false;
+  });
 }
 
 // ── Mobile: Navigate Forward ──
 function mobileNext() {
   if (currentFace >= mobileFaces.length - 1) return;
-  currentFace++;
-  showFace(currentFace);
+  jotterTo(currentFace + 1);
 }
 
 // ── Mobile: Navigate Backward ──
 function mobilePrev() {
   if (currentFace <= 0) return;
-  currentFace--;
-  showFace(currentFace);
+  jotterTo(currentFace - 1);
 }
 
 // ── Mobile: Auto Navigate to Face ──
 function mobileAutoTo(targetFace) {
+  clearJotterSheets();
+  isAnimating = false;
   currentFace = targetFace;
   showFace(currentFace);
 }
@@ -153,6 +276,80 @@ document.querySelectorAll('.nextprev-btn').forEach(btn => {
     }
   });
 });
+
+// ── Jotter hint, swipe, and keys (small screens) ──
+const jotterNext = document.querySelector('.jotter-hint-next');
+const jotterPrev = document.querySelector('.jotter-hint-prev');
+if (jotterNext) {
+  jotterNext.addEventListener('click', () => {
+    if (!isMobile()) return;
+    mobileNext();
+  });
+}
+if (jotterPrev) {
+  jotterPrev.addEventListener('click', () => {
+    if (!isMobile()) return;
+    mobilePrev();
+  });
+}
+
+let jotterTouch = null;
+const bookEl = document.querySelector('.book');
+bookEl.addEventListener('touchstart', (e) => {
+  if (!isMobile() || e.touches.length !== 1) return;
+  const t = e.touches[0];
+  jotterTouch = { x: t.clientX, y: t.clientY, target: e.target };
+}, { passive: true });
+
+bookEl.addEventListener('touchend', (e) => {
+  if (!isMobile() || !jotterTouch || isAnimating) {
+    jotterTouch = null;
+    return;
+  }
+  const t = e.changedTouches[0];
+  const dy = t.clientY - jotterTouch.y;
+  const dx = t.clientX - jotterTouch.x;
+  const startTarget = jotterTouch.target;
+  jotterTouch = null;
+  if (startTarget.closest('a, button, input, textarea, select, label')) return;
+  if (Math.abs(dy) < 64 || Math.abs(dy) < Math.abs(dx) * 1.2) return;
+
+  const faceEl = visibleFaceElement();
+  if (!faceEl) return;
+  if (dy < 0) {
+    const atBottom = faceEl.scrollTop + faceEl.clientHeight >= faceEl.scrollHeight - 12;
+    if (atBottom) mobileNext();
+  } else if (faceEl.scrollTop <= 12) {
+    mobilePrev();
+  }
+}, { passive: true });
+
+document.addEventListener('keydown', (e) => {
+  if (!isMobile()) return;
+  if (e.target.closest('input, textarea, select')) return;
+  if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    mobileNext();
+  } else if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    mobilePrev();
+  }
+});
+
+// ── Contact form ──
+const contactForm = document.querySelector('.contact-box form');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(contactForm);
+    const name = String(data.get('name') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const message = String(data.get('message') || '').trim();
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+    const body = encodeURIComponent(`${message}\n\n— ${name}\n${email}`);
+    window.location.href = `mailto:rootikigai@gmail.com?subject=${subject}&body=${body}`;
+  });
+}
 
 // ── Contact Me Button ──
 document.querySelector('.contact-me').addEventListener('click', (e) => {
@@ -244,10 +441,28 @@ function scaleWrapper() {
 }
 
 scaleWrapper();
+let layoutIsMobile = isMobile();
 window.addEventListener('resize', () => {
-  if (isMobile()) {
+  const mobile = isMobile();
+  const sheets = document.querySelectorAll('.jotter-sheet');
+  if (sheets.length) {
+    sheets.forEach(sheet => sheet.remove());
+    isAnimating = false;
+  }
+
+  if (mobile) {
     showFace(currentFace);
   } else {
+    if (layoutIsMobile) {
+      isAnimating = false;
+      document.querySelectorAll('.book-page').forEach(p => {
+        p.style.display = '';
+      });
+      document.querySelectorAll('.page-front, .page-back').forEach(el => {
+        el.style.display = '';
+      });
+    }
     scaleWrapper();
   }
+  layoutIsMobile = mobile;
 });
