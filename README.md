@@ -4,7 +4,7 @@ Software Engineer across backend, frontend, systems, and cloud. I build producti
 
 ## Featured work
 
-**[Techdemy LMS](https://techdemy.ng)** — client work for Techdemy. A learning platform for a pilot cohort of 100 students, with three roles: students, admins, and facilitators.
+**[Techdemy LMS](https://techdemy.ng)**: client work for Techdemy. A learning platform for a pilot cohort of 100 students, with three roles: students, admins, and facilitators.
 
 - Students see their cohort, curriculum, and deadlines.
 - Admins see students, cohorts, and curricula.
