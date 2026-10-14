@@ -1,5 +1,5 @@
 # Hola! 
-# Kelvin Ifeanyi here 👋
+# Ikigai here 👋
 
 I own a computer and solve real world problems with it...basically!
 
