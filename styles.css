@@ -697,7 +697,7 @@ body {
     .book-page .page-back {
         width: 100%;
         height: 100%;
-        padding: 1.15rem 1.15rem 3.6rem;
+        padding: 3.5rem 1.15rem 3.6rem;
         left: 0;
         transform: none;
         display: none;
@@ -706,12 +706,7 @@ body {
         overflow-x: hidden;
     }
 
-    body.jotter-has-prev .book-page .page-front,
-    body.jotter-has-prev .book-page .page-back {
-        padding-top: 3.6rem;
-    }
-
-    .profile-page { justify-content: flex-start; padding-top: 1rem; }
+    .profile-page { justify-content: flex-start; padding-top: 0; }
     .profile-page h1 { font-size: clamp(1.05rem, 6.2vw, 1.35rem); }
     .profile-page h3 { font-size: 1rem; }
     .profile-page img { max-width: 100px; }
@@ -736,52 +731,33 @@ body {
 
     .portfolio-box .img-box { height: 11rem; }
 
-    .book.is-jotter-turning::after {
-        content: '';
+    .jotter-stage {
+        position: fixed;
+        inset: 0;
+        z-index: 35;
+        pointer-events: none;
+        perspective: 1400px;
+        perspective-origin: center top;
+    }
+
+    .jotter-sheet {
         position: absolute;
         inset: 0;
-        z-index: 20;
-        pointer-events: none;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.04) 42%, transparent 68%);
+        transform-origin: center top;
+        will-change: transform, opacity;
     }
 
-    .book-page.jotter-sheet {
-        z-index: 30;
-        display: block;
-        transform: rotateX(0deg) !important;
-        transform-origin: top center;
-        transform-style: preserve-3d;
-        transition: transform 0.9s cubic-bezier(0.4, 0.05, 0.2, 1);
-        pointer-events: none;
-        overflow: visible;
-        background: transparent;
-        box-shadow: none;
+    .jotter-sheet .book-page {
+        display: block !important;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
     }
 
-    .book-page.jotter-sheet.is-flipping {
-        transform: rotateX(-180deg) !important;
+    .jotter-sheet.is-up {
+        animation: jotter-away 0.7s cubic-bezier(0.33, 0.02, 0.18, 1) forwards;
     }
 
-    .book-page.jotter-sheet .page-front,
-    .book-page.jotter-sheet .page-back {
-        display: block;
-        overflow: hidden;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        transform: rotateX(0deg);
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
-    }
-
-    .jotter-backface {
-        position: absolute;
-        inset: 0;
-        background:
-            linear-gradient(to bottom, rgba(0, 0, 0, 0.16), transparent 2.2rem),
-            linear-gradient(180deg, #d9d3c8 0%, #f6f3ee 22%, #fff 100%);
-        transform: rotateX(180deg);
-        transform-origin: top center;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
+    .jotter-sheet.is-down {
+        animation: jotter-away 0.7s cubic-bezier(0.33, 0.02, 0.18, 1) reverse both;
     }
 
     .nextprev-btn {
@@ -902,6 +878,23 @@ body {
     }
 }
 
+@keyframes jotter-away {
+    0% {
+        transform: translate3d(0, 0, 0) rotateX(0deg);
+        opacity: 1;
+    }
+
+    55% {
+        transform: translate3d(0, -28%, 0) rotateX(-32deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(0, -120%, 0) rotateX(-72deg);
+        opacity: 0;
+    }
+}
+
 @keyframes jotter-nudge-up {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-4px); }
@@ -914,5 +907,6 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
     .jotter-hint-icon { animation: none; }
-    .book-page.jotter-sheet { transition: none; }
+    .jotter-sheet.is-up,
+    .jotter-sheet.is-down { animation: none; }
 }

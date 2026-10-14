@@ -21,9 +21,10 @@ const mobileFaces = [
 let currentFace = 0;
 
 // ── Mobile: Show Face ──
-function showFace(index) {
-  // Hide real pages. Leave a jotter sheet alone so it can flip off the stack.
-  document.querySelectorAll('.book-page:not(.jotter-sheet)').forEach(p => {
+function showFace(index, options) {
+  const updateChrome = !options || options.updateChrome !== false;
+  // Only the real book pages. A flying sheet lives outside .book.
+  document.querySelectorAll('.book > .book-page').forEach(p => {
     p.style.display = 'none';
   });
 
@@ -47,19 +48,11 @@ function showFace(index) {
     if (back) back.style.display = 'block';
   }
 
-  updateJotterHint();
+  if (updateChrome) updateJotterHint();
 }
 
 function prefersReducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
-function visibleFaceElement() {
-  const target = mobileFaces[currentFace];
-  if (!target) return null;
-  const pageEl = document.getElementById(target.page);
-  if (!pageEl) return null;
-  return pageEl.querySelector(target.face === 'front' ? '.page-front' : '.page-back');
 }
 
 function updateJotterHint() {
@@ -75,44 +68,60 @@ function updateJotterHint() {
     prev.classList.toggle('is-done', atStart);
     prev.disabled = atStart;
   }
-  document.body.classList.toggle('jotter-has-prev', isMobile() && !atStart);
-  document.body.classList.toggle('jotter-has-next', isMobile() && !atEnd);
   const pageNum = document.querySelector('.jotter-page-num');
   if (pageNum) pageNum.textContent = String(currentFace + 1);
 }
 
 function clearJotterSheets() {
-  document.querySelectorAll('.jotter-sheet').forEach(sheet => sheet.remove());
+  document.querySelectorAll('.jotter-stage').forEach(stage => stage.remove());
 }
 
-function makeJotterSheet(faceEl) {
+function faceElementFor(index) {
+  const target = mobileFaces[index];
+  if (!target) return null;
+  const pageEl = document.getElementById(target.page);
+  if (!pageEl) return null;
+  return pageEl.querySelector(target.face === 'front' ? '.page-front' : '.page-back');
+}
+
+function visibleFaceElement() {
+  return faceElementFor(currentFace);
+}
+
+function makeJotterStage(faceEl) {
+  const stage = document.createElement('div');
+  stage.className = 'jotter-stage';
+  stage.setAttribute('aria-hidden', 'true');
+
   const sheet = document.createElement('div');
-  sheet.className = 'book-page jotter-sheet';
-  sheet.style.display = 'block';
-  sheet.setAttribute('aria-hidden', 'true');
+  sheet.className = 'jotter-sheet';
+
+  const page = document.createElement('div');
+  page.className = 'book-page';
+  page.style.display = 'block';
+
   const face = faceEl.cloneNode(true);
+  face.style.display = 'block';
   face.style.overflow = 'hidden';
-  sheet.appendChild(face);
-  const back = document.createElement('div');
-  back.className = 'jotter-backface';
-  sheet.appendChild(back);
-  document.querySelector('.book').appendChild(sheet);
-  return sheet;
+  page.appendChild(face);
+  sheet.appendChild(page);
+  stage.appendChild(sheet);
+  return { stage, sheet, face };
 }
 
 function whenJotterSettles(sheet, done) {
   const finish = (event) => {
-    if (event && event.propertyName && event.propertyName !== 'transform') return;
+    if (event && event.target !== sheet) return;
     if (sheet.dataset.done === '1') return;
     sheet.dataset.done = '1';
-    sheet.removeEventListener('transitionend', finish);
+    sheet.removeEventListener('animationend', finish);
     done();
   };
-  sheet.addEventListener('transitionend', finish);
-  setTimeout(() => finish(), 1100);
+  sheet.addEventListener('animationend', finish);
+  setTimeout(() => finish(), 900);
 }
 
-// Lift the current sheet up to reveal the next one, or drop the previous sheet back down.
+// Flip up sends the current sheet up and away. Flip down is that motion reversed.
 function jotterTo(nextIndex) {
   if (isAnimating) return;
   if (nextIndex < 0 || nextIndex >= mobileFaces.length || nextIndex === currentFace) return;
@@ -124,49 +133,35 @@ function jotterTo(nextIndex) {
   }
 
   const forward = nextIndex > currentFace;
-  isAnimating = true;
-  bookEl.classList.add('is-jotter-turning');
-
-  if (forward) {
-    const faceEl = visibleFaceElement();
-    if (!faceEl) {
-      currentFace = nextIndex;
-      showFace(currentFace);
-      bookEl.classList.remove('is-jotter-turning');
-      isAnimating = false;
-      return;
-    }
-    const sheet = makeJotterSheet(faceEl);
+  const movingFace = forward ? visibleFaceElement() : faceElementFor(nextIndex);
+  if (!movingFace) {
     currentFace = nextIndex;
     showFace(currentFace);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => sheet.classList.add('is-flipping'));
-    });
-    whenJotterSettles(sheet, () => {
-      sheet.remove();
-      bookEl.classList.remove('is-jotter-turning');
-      isAnimating = false;
-    });
     return;
   }
 
-  currentFace = nextIndex;
-  showFace(currentFace);
-  const faceEl = visibleFaceElement();
-  if (!faceEl) {
-    bookEl.classList.remove('is-jotter-turning');
-    isAnimating = false;
-    return;
+  isAnimating = true;
+  const { stage, sheet, face } = makeJotterStage(movingFace);
+
+  if (forward) {
+    document.body.appendChild(stage);
+    face.scrollTop = movingFace.scrollTop;
+    currentFace = nextIndex;
+    showFace(currentFace, { updateChrome: false });
+    requestAnimationFrame(() => sheet.classList.add('is-up'));
+  } else {
+    sheet.classList.add('is-down');
+    document.body.appendChild(stage);
+    face.scrollTop = movingFace.scrollTop;
   }
-  const sheet = makeJotterSheet(faceEl);
-  sheet.classList.add('is-flipping');
-  sheet.style.transition = 'none';
-  void sheet.offsetWidth;
-  sheet.style.transition = '';
-  requestAnimationFrame(() => sheet.classList.remove('is-flipping'));
+
   whenJotterSettles(sheet, () => {
-    sheet.remove();
-    bookEl.classList.remove('is-jotter-turning');
+    if (!forward) {
+      currentFace = nextIndex;
+      showFace(currentFace, { updateChrome: false });
+    }
+    stage.remove();
+    updateJotterHint();
     isAnimating = false;
   });
 }
@@ -444,9 +439,9 @@ scaleWrapper();
 let layoutIsMobile = isMobile();
 window.addEventListener('resize', () => {
   const mobile = isMobile();
-  const sheets = document.querySelectorAll('.jotter-sheet');
-  if (sheets.length) {
-    sheets.forEach(sheet => sheet.remove());
+  const stages = document.querySelectorAll('.jotter-stage');
+  if (stages.length) {
+    stages.forEach(stage => stage.remove());
     isAnimating = false;
   }
 
