@@ -704,6 +704,7 @@ body {
         box-shadow: none;
         overflow-y: auto;
         overflow-x: hidden;
+        touch-action: pan-y;
     }
 
     .profile-page { justify-content: flex-start; padding-top: 0; }
@@ -753,11 +754,11 @@ body {
     }
 
     .jotter-sheet.is-up {
-        animation: jotter-away 0.7s cubic-bezier(0.33, 0.02, 0.18, 1) forwards;
+        animation: jotter-away 0.38s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
 
     .jotter-sheet.is-down {
-        animation: jotter-away 0.7s cubic-bezier(0.33, 0.02, 0.18, 1) reverse both;
+        animation: jotter-away 0.38s cubic-bezier(0.4, 0, 0.2, 1) reverse both;
     }
 
     .nextprev-btn {
@@ -881,11 +882,6 @@ body {
 @keyframes jotter-away {
     0% {
         transform: translate3d(0, 0, 0) rotateX(0deg);
-        opacity: 1;
-    }
-
-    55% {
-        transform: translate3d(0, -28%, 0) rotateX(-32deg);
         opacity: 1;
     }
 

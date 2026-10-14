@@ -118,7 +118,7 @@ function whenJotterSettles(sheet, done) {
     done();
   };
   sheet.addEventListener('animationend', finish);
-  setTimeout(() => finish(), 900);
+  setTimeout(() => finish(), 520);
 }
 
 // Flip up sends the current sheet up and away. Flip down is that motion reversed.
@@ -272,7 +272,7 @@ document.querySelectorAll('.nextprev-btn').forEach(btn => {
   });
 });
 
-// ── Jotter hint, swipe, and keys (small screens) ──
+// ── Jotter buttons (small screens). Scrolling must not turn the page. ──
 const jotterNext = document.querySelector('.jotter-hint-next');
 const jotterPrev = document.querySelector('.jotter-hint-prev');
 if (jotterNext) {
@@ -287,49 +287,6 @@ if (jotterPrev) {
     mobilePrev();
   });
 }
-
-let jotterTouch = null;
-const bookEl = document.querySelector('.book');
-bookEl.addEventListener('touchstart', (e) => {
-  if (!isMobile() || e.touches.length !== 1) return;
-  const t = e.touches[0];
-  jotterTouch = { x: t.clientX, y: t.clientY, target: e.target };
-}, { passive: true });
-
-bookEl.addEventListener('touchend', (e) => {
-  if (!isMobile() || !jotterTouch || isAnimating) {
-    jotterTouch = null;
-    return;
-  }
-  const t = e.changedTouches[0];
-  const dy = t.clientY - jotterTouch.y;
-  const dx = t.clientX - jotterTouch.x;
-  const startTarget = jotterTouch.target;
-  jotterTouch = null;
-  if (startTarget.closest('a, button, input, textarea, select, label')) return;
-  if (Math.abs(dy) < 64 || Math.abs(dy) < Math.abs(dx) * 1.2) return;
-
-  const faceEl = visibleFaceElement();
-  if (!faceEl) return;
-  if (dy < 0) {
-    const atBottom = faceEl.scrollTop + faceEl.clientHeight >= faceEl.scrollHeight - 12;
-    if (atBottom) mobileNext();
-  } else if (faceEl.scrollTop <= 12) {
-    mobilePrev();
-  }
-}, { passive: true });
-
-document.addEventListener('keydown', (e) => {
-  if (!isMobile()) return;
-  if (e.target.closest('input, textarea, select')) return;
-  if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    mobileNext();
-  } else if (e.key === 'ArrowDown') {
-    e.preventDefault();
-    mobilePrev();
-  }
-});
 
 // ── Contact form ──
 const contactForm = document.querySelector('.contact-box form');
