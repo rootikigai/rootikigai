@@ -1,53 +1,44 @@
-# Hola! 
-# Ikigai here 👋
+# Kelvin Ifeanyi [IKIGAI]
 
-I own a computer and solve real world problems with it...basically!
+Software Engineer across backend, frontend, systems, and cloud. I build production software that people actually use, and I own it from the first design through to deployment.
 
-Full-stack engineer who builds production systems that solve real problems. I care about clean code, pragmatic architecture, and shipping software that people actually use.
+## Featured work
 
-## What I Build
-I work across the stack with JavaScript/TypeScript, Node.js, React, Java (Spring Boot), Python, and Go. 
+**[Techdemy LMS](https://techdemy.ng)** — client work for Techdemy. A learning platform for a pilot cohort of 100 students, with three roles: students, admins, and facilitators.
 
-I'm currently focused on DevOps and AI-driven automation—using LLMs and agentic architectures to build intelligent systems that handle complexity gracefully.
+- Students see their cohort, curriculum, and deadlines.
+- Admins see students, cohorts, and curricula.
+- Facilitators manage assignments, grades, and messages, and can create cohorts and curricula.
 
-### Recent work:
+Built with TypeScript on a Next.js web app and a NestJS API. TanStack Query holds server data. PostgreSQL stores records, Redis handles cache and queues, and a separate worker runs background jobs. Course files stay in private storage and open through short-lived links.
 
-- #### KuriosKids – Production AI learning platform for children (ages 4-12) using agentic LLM architecture with tool-calling agents, content safety guardrails, and optimized prompt engineering
+## Other recent work
 
-- #### Go2geda – Corporate carpool platform with PostgreSQL geo-matching, deployed as microservices on Azure with Docker
+- **KuriosKids** — production AI learning platform for children (ages 4–12), with tool-calling agents, content safety guardrails, and prompt engineering.
+- **Go2geda** — corporate carpool platform with PostgreSQL geo-matching, deployed as microservices on Azure with Docker.
+- **TrackSpense** — financial behavior analytics with Spring Boot and MongoDB aggregation pipelines.
+- **MediSa** — drug dispensary platform with a Django backend, MongoDB, and Docker on AWS.
 
-- #### TrackSpense – Financial behavior analytics platform using Spring Boot + MongoDB aggregation pipelines to surface spending patterns
+## What I use
 
-- #### MediSa – Drug dispensary platform with Django backend, MongoDB integration, and Docker deployment on AWS
+- **Languages:** TypeScript, JavaScript, Java, Python, Go
+- **Frontend:** React, Next.js, TanStack Query, Tailwind CSS, HTML, CSS
+- **Backend:** Node.js, NestJS, Express, Spring Boot, Django
+- **Data:** PostgreSQL, Redis, MongoDB, MySQL
+- **DevOps:** Docker, Kubernetes, AWS, Azure, CI/CD with GitHub Actions, Git
 
-## What I Use
-- #### My PC obviously 😏
-- #### Languages: JavaScript (ES6+), TypeScript, Java, Python, Go
-- #### Frontend: React, Next.js, Vue.js, Tailwind CSS
-- #### Backend: Node.js, Express, NestJS, Spring Boot, Django
-- #### Databases: MongoDB, PostgreSQL, MySQL
-- #### AI/ML: LangChain, OpenAI API, Gemini API, prompt engineering, agentic systems
-- #### DevOps: Docker, AWS, Azure, CI/CD (GitHub Actions), Git
+## Currently
 
-## What I Care About
+- Shipping client systems, with Techdemy LMS as the current featured build
+- Open to full-time remote roles where I can own a problem with a strong team
+- Freelancing as a software engineer
 
-- End-to-end ownership – I don't just write code; I ship features, own outcomes, and iterate based on real user feedback
-- Pragmatic AI – I use AI where it delivers measurable value, not because it's trendy. LLMs are tools, not magic
-- Clean, testable code – TDD practitioner, peer reviewer, believer in code that future-me won't hate
-- Cross-functional collaboration – I've led teams, bridged technical/business stakeholders, and driven Agile sprints from requirements to production
+## Let's connect
 
+Hold Ctrl or Cmd and click to open in a new tab.
 
-## Currently I Am:
-
-- Building AI-powered systems that automate complex workflows
-- Deeply exploring into modern TypeScript patterns (tRPC, Drizzle ORM, ZOD)
-- Freelancing as a Software Engineer for U.S, UK and Canadian startups
-- Open to full-time remote opportunities where I can solve problems with great teams
-
-## Let's Connect 
-#### *(Hold CTRL or CMD and click to open in a new tab.)*
-- [Send me an email.](mailto:rootikigai@gmail.com?subject=Inquiry&body=Hi%20there,%20Kelvin,)
-- [Send me a WhatsApp message](https://wa.me/+2348035859351?text=Hi%20Kelvin!%20Here,%20from%20GitHub.)   
-- [My Portfolio Suitcase.](https://rootikigai.vercel.app)
-- [LinkedIn? Gain a valued connect.](https://linkedin.com/in/rootikigai)
-- [How about X?](https://x.com/rootikigai)
+- [Email me](mailto:rootikigai@gmail.com?subject=Inquiry&body=Hi%20Kelvin%20Ifeanyi%2C)
+- [WhatsApp](https://wa.me/+2348035859351?text=Hi%20Kelvin%20Ifeanyi%2C%20reaching%20out%20from%20GitHub.)
+- [Portfolio](https://rootikigai.vercel.app)
+- [LinkedIn](https://linkedin.com/in/rootikigai)
+- [X](https://x.com/rootikigai)

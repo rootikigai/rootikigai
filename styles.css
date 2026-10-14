@@ -155,20 +155,26 @@ body {
     margin-bottom: .8rem;
 }
 
-.profile-page h1 {
+.profile-page h1,
+.profile-page h4 {
     width: 100%;
     max-width: 100%;
-    font-size: clamp(1.15rem, 4.8cqw, 1.7rem);
-    line-height: 1.2;
+    margin: 0;
     text-align: center;
     text-wrap: balance;
 }
 
-.profile-page h3 {
-    width: 100%;
-    font-size: 1.5rem;
+.profile-page h1 {
+    font-size: clamp(1.15rem, 4.2cqw, 1.65rem);
     line-height: 1.2;
-    text-align: center;
+    font-weight: 700;
+}
+
+.profile-page h4 {
+    margin-top: .35rem;
+    font-size: .95rem;
+    font-weight: 500;
+    line-height: 1.35;
     color: var(--main-color);
 }
 
@@ -403,12 +409,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 4.8rem;
+    width: auto;
+    min-width: 4.6rem;
     height: 2.7rem;
+    padding: .15rem .4rem;
     border: var(--border);
     border-radius: .3rem;
     font-weight: 500;
-    font-size: .72rem;
+    font-size: .68rem;
+    line-height: 1.1;
+    text-align: center;
     transition: .3s ease;
     gap: .15rem;
 }
@@ -418,10 +428,12 @@ body {
     cursor: default;
 }
 
-.skills-content .content span img {
+.skills-content .content span img,
+.skills-content .content span svg {
     width: 1.2rem;
     height: 1.2rem;
     object-fit: contain;
+    flex-shrink: 0;
 }
 
 /* ── Latest Project ── */
@@ -709,7 +721,7 @@ body {
 
     .profile-page { justify-content: flex-start; padding-top: 0; }
     .profile-page h1 { font-size: clamp(1.05rem, 6.2vw, 1.35rem); }
-    .profile-page h3 { font-size: 1rem; }
+    .profile-page h4 { font-size: .78rem; margin-top: .25rem; }
     .profile-page img { max-width: 100px; }
     .profile-page p { font-size: .82rem; }
     .profile-page .btn-box { flex-wrap: wrap; justify-content: center; gap: .5rem; }
@@ -727,8 +739,9 @@ body {
     .services-content p { font-size: .75rem; }
 
     .skills-content h3 { font-size: .9rem; }
-    .skills-content .content span { width: 3.8rem; height: 2.3rem; font-size: .62rem; }
-    .skills-content .content span img { width: 1rem; height: 1rem; }
+    .skills-content .content span { width: auto; min-width: 3.6rem; height: 2.5rem; font-size: .6rem; padding: .1rem .3rem; }
+    .skills-content .content span img,
+    .skills-content .content span svg { width: 1rem; height: 1rem; }
 
     .portfolio-box .img-box { height: 11rem; }
 
